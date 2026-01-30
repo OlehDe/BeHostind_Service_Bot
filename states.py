@@ -4,3 +4,11 @@ class BuyHosting(StatesGroup):
     choose_tariff = State()
     choose_period = State()
     confirm = State()
+
+from aiogram.fsm.state import State, StatesGroup
+
+class RegisterUser(StatesGroup):
+    name = State()
+    surname = State()
+    contact = State()
+    card = State()

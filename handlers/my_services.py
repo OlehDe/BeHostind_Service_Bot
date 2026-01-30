@@ -5,8 +5,7 @@ from handlers import balance
 
 router = Router()
 
-CANCEL_FEE = 50.0  # штраф за скасування
-
+CANCEL_FEE = 50.0
 
 @router.message(F.text == "Мої послуги")
 async def my_services(message: Message):
@@ -36,7 +35,6 @@ async def my_services(message: Message):
     )
 
     await message.answer(text)
-
 
 @router.message(F.text.startswith("Скасувати"))
 async def cancel_service(message: Message):
@@ -74,6 +72,5 @@ async def cancel_service(message: Message):
         f"Ваш новий баланс: {balance.get_balance(user_id):.2f} ₴"
     )
 
-    # Якщо послуг більше немає — видаляємо користувача зі сховища
     if not orders[user_id]:
         del orders[user_id]

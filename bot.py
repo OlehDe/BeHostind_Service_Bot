@@ -2,22 +2,19 @@ import asyncio
 from aiogram import Bot, Dispatcher
 from config import BOT_TOKEN
 
-# Імпортуємо всі хендлери
-from handlers import start, hosting, balance, support, rent, my_services
+from handlers import start, hosting, balance, support, profile, my_services
 
 async def main():
     bot = Bot(token=BOT_TOKEN)
-    dp = Dispatcher()  # Створюємо Dispatcher
+    dp = Dispatcher()
 
-    # Підключаємо хендлери
     dp.include_router(start.router)
     dp.include_router(hosting.router)
     dp.include_router(balance.router)
     dp.include_router(support.router)
-    dp.include_router(rent.router)
+    dp.include_router(profile.router)
     dp.include_router(my_services.router)
 
-    # Запуск поллінгу
     try:
         print("Бот запущено...")
         await dp.start_polling(bot)
