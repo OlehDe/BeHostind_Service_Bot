@@ -13,8 +13,7 @@ class SupportState(StatesGroup):
 @router.message(F.text == "Підтримка")
 async def support_start(message: Message, state: FSMContext):
     await message.answer(
-        "Опишіть вашу проблему одним повідомленням.\n"
-        "Ми передамо її адміністратору."
+        "Опишіть вашу проблему одним повідомленням:"
     )
     await state.set_state(SupportState.waiting_message)
 
